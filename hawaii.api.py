@@ -43,7 +43,7 @@ def welcome():
 
 @app.route("/api/v1.0/Measurement")
 def Measurement():
-    """Return a list of all passenger names"""
+    """Return a list of all measurements we want"""
     # Query Rain measurements for last year
     results = session.query(Measurement.date, Measurement.prcp,).filter(Measurement.date > "2016-08-22").order_by(Measurement.date).all()
 
@@ -57,13 +57,12 @@ def Measurement():
     results = session.query(Measurement.date, Measurement.prcp,).filter(Measurement.date > "2016-08-22").order_by(Measurement.date).all()
 
     # Create a dictionary from the row data and append to a list of all_passengers
-    all_passengers = []
-    for name, age, sex in results:
-        passenger_dict = {}
-        passenger_dict["name"] = name
-        passenger_dict["age"] = age
-        passenger_dict["sex"] = sex
-        all_passengers.append(passenger_dict)
+    Measurements = []
+    for date, prcp in results:
+        measurement_dict = {}
+        measurement_dict["date"] = date
+        measurement_dict["prcp"] = prcp
+        Measurements.append(measurement_dict)
 
     return jsonify(all_passengers)
 
