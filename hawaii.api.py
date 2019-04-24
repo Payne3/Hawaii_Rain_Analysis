@@ -64,7 +64,7 @@ def Measurement():
         measurement_dict["prcp"] = prcp
         Measurements.append(measurement_dict)
 
-    return jsonify(all_passengers)
+    return jsonify(Measurements)
 
 
 
