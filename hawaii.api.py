@@ -56,7 +56,7 @@ def Measurement():
     # Query the measurables
     results = session.query(Measurement.date, Measurement.prcp,).filter(Measurement.date > "2016-08-22").order_by(Measurement.date).all()
 
-    # Create a dictionary from the row data and append to a list of all_passengers
+    # Create a dictionary from the row data and append to a list of measurements
     Measurements = []
     for date, prcp in results:
         measurement_dict = {}
